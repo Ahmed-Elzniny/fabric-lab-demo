@@ -1,0 +1,307 @@
+/* src/styles/purchases.css — المشتريات واستلام البضاعة والملصقات. */
+
+.supplier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+.supplier-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  text-align: right;
+  font-size: 12px;
+}
+.supplier-card:hover {
+  border-color: var(--fg-3);
+}
+.supplier-card[aria-pressed="true"] {
+  border-color: var(--teal);
+  background: var(--teal-50);
+}
+.supplier-card__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.supplier-card__name svg {
+  color: var(--fg-3);
+}
+.supplier-card__bal {
+  color: var(--serious);
+  font-weight: 600;
+}
+.supplier-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 28px;
+}
+.supplier-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  min-width: 0;
+}
+
+/* إدخال الطبخة */
+.lot-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface-2);
+}
+.lot-entry__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lot-entry__head > div {
+  flex: 1;
+}
+.step__num--sm {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  border-radius: 7px;
+}
+.lot-entry__row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.lot-entry select.text-input {
+  height: 40px;
+}
+.lot-entry__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line-strong);
+  font-size: 13px;
+  color: var(--fg-2);
+}
+.lot-entry__foot b {
+  color: var(--fg);
+}
+.color-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.color-pick__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 8px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.color-pick__btn .color-tag__chip {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+}
+.color-pick__btn[aria-checked="true"] {
+  border-color: var(--teal);
+  background: var(--teal-50);
+  font-weight: 700;
+}
+.lengths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  min-height: 48px;
+  padding: 7px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  cursor: text;
+}
+.lengths:focus-within {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+.lengths__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 4px 3px 8px;
+  border-radius: 8px;
+  background: var(--teal-50);
+  border: 1px solid color-mix(in srgb, var(--teal) 35%, var(--line));
+  font-size: 13px;
+  font-weight: 600;
+}
+.lengths__chip small {
+  font-size: 10px;
+  color: var(--fg-3);
+  font-weight: 500;
+}
+.lengths__chip button {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--fg-3);
+}
+.lengths__chip button:hover {
+  background: var(--crit-soft);
+  color: var(--crit);
+}
+.lengths__input {
+  flex: 1 0 110px;
+  min-width: 90px;
+  height: 32px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+}
+.lengths__tools {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.add-lot {
+  align-self: flex-start;
+  border-style: dashed;
+}
+
+/* بعد الاستلام */
+.success--wide {
+  max-width: none;
+}
+.labels-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 15px;
+}
+.labels-block > p {
+  margin: 2px 0 12px;
+  font-size: 12.5px;
+}
+.labels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+}
+/* الملصق نفسه أبيض دايماً زي الورق الحقيقي */
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0e1726;
+  border: 1px dashed #94a3b8;
+  font-size: 11px;
+  box-shadow: 0 1px 2px rgba(14, 23, 38, 0.08);
+}
+.label__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+.label__top b {
+  font-size: 12.5px;
+}
+.label__bars {
+  width: 100%;
+  height: 30px;
+  color: #0e1726;
+}
+.label__code {
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+.label__meta {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 4px;
+}
+.label--more {
+  align-items: center;
+  justify-content: center;
+  color: #4a5568;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* تفاصيل فاتورة الشراء */
+.po-lots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.po-lots button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  text-align: right;
+}
+.po-lots button:hover {
+  border-color: var(--teal);
+  background: var(--surface-hover);
+}
+.po-lots button > svg {
+  color: var(--fg-3);
+  flex: none;
+}
+
+@media (max-width: 900px) {
+  .supplier-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .supplier-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .labels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

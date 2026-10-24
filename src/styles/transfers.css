@@ -1,0 +1,338 @@
+/* src/styles/transfers.css
+   التحويلات بين المخازن + النوافذ المنبثقة (Modal). الألوان من متغيرات globals.css. */
+
+/* ───────────── النافذة المنبثقة ───────────── */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px))
+    max(16px, env(safe-area-inset-left, 0px));
+}
+.modal__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(7, 13, 23, 0.55);
+  cursor: default;
+}
+.modal__panel {
+  position: relative;
+  width: min(480px, 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow-pop);
+  overflow: hidden;
+  animation: toast-in 0.18s ease;
+}
+.modal__panel--lg {
+  width: min(1040px, 100%);
+}
+.modal__body {
+  overflow-y: auto;
+  padding: 18px 20px 20px;
+  background: var(--bg);
+}
+.modal__panel--sm .modal__body {
+  background: var(--surface);
+}
+
+/* ───────────── عناصر مشتركة ───────────── */
+.text-input {
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  padding: 0 12px;
+  font-size: 13.5px;
+  font-weight: 500;
+  width: 100%;
+}
+.text-input:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+.field-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.field--grow {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.chip--btn {
+  border: 1px solid color-mix(in srgb, var(--fg-3) 35%, transparent);
+  cursor: pointer;
+}
+.chip--btn:hover {
+  border-color: var(--teal);
+  color: var(--teal-700);
+}
+.toolbar__text {
+  margin: 0;
+  flex: 1 1 280px;
+  font-size: 13px;
+  color: var(--fg-2);
+}
+.toolbar__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.stat-strip--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.stat-tile strong small {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fg-3);
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.section-title svg {
+  color: var(--teal-700);
+}
+.route-mini {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.route-mini svg {
+  color: var(--fg-3);
+}
+.dots--inline {
+  display: inline-flex;
+  vertical-align: middle;
+  margin: 0;
+}
+
+/* ───────────── اختيار المسار ───────────── */
+.route-pick {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 10px;
+}
+.route-pick__wh {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  min-width: 0;
+}
+.route-pick__wh small {
+  font-size: 11.5px;
+  color: var(--fg-3);
+}
+.route-pick__wh b {
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.route-pick__wh--kerdasa {
+  border-color: color-mix(in srgb, var(--wh-kerdasa) 40%, var(--line));
+  background: var(--wh-kerdasa-soft);
+}
+.route-pick__wh--mahalla {
+  border-color: color-mix(in srgb, var(--wh-mahalla) 40%, var(--line));
+  background: var(--wh-mahalla-soft);
+}
+.route-pick__swap {
+  align-self: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--fg);
+}
+.route-pick__swap:hover:not(:disabled) {
+  border-color: var(--teal);
+  color: var(--teal-700);
+}
+.route-pick__swap:disabled {
+  color: var(--fg-3);
+  cursor: not-allowed;
+}
+
+/* ───────────── التحويلات في الطريق ───────────── */
+.transit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+.transit {
+  padding: 14px 16px;
+  gap: 10px;
+  border-color: color-mix(in srgb, var(--warn) 35%, var(--line));
+}
+.transit--late {
+  border-color: color-mix(in srgb, var(--crit) 45%, var(--line));
+}
+.transit__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.transit__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.transit__items li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+.transit__colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.color-tag--sm {
+  font-size: 12px;
+  font-weight: 500;
+  gap: 5px;
+}
+.color-tag--sm .color-tag__chip {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+.transit__note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--fg-2);
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+.transit .ab-row__more {
+  align-self: flex-start;
+}
+.transit__codes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+.transit__codes .roll-tags {
+  display: inline-flex;
+}
+.transit__foot {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 12.5px;
+}
+.confirm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--teal-50);
+}
+.confirm__actions {
+  display: flex;
+  gap: 6px;
+}
+
+/* ───────────── تحويل النقدية ───────────── */
+.cash-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.quick-amounts {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: -6px;
+}
+.cash-form__preview {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--fg-2);
+}
+
+/* ───────────── المحرر المضغوط (جوه نافذة) ───────────── */
+.composer--compact {
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+.composer--compact .composer__side {
+  top: 0;
+}
+
+@media (max-width: 1180px) {
+  .composer--compact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .stat-strip--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .transit-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .route-pick {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+  .route-pick__wh {
+    padding: 10px;
+  }
+  .route-pick__wh b {
+    font-size: 13.5px;
+  }
+  .modal {
+    padding: 0;
+    place-items: stretch;
+  }
+  .modal__panel {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .modal__body {
+    padding: 14px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+}

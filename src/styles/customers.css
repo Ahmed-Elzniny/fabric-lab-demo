@@ -1,0 +1,204 @@
+/* src/styles/customers.css
+   العملاء وكشف الحساب وأعمار الديون. ألوان الأعمار من ألوان الحالة (أخضر ← كهرماني ← برتقالي ← أحمر)
+   ودايماً معاها اسم الفترة والمبلغ — اللون عمره ما بيبقى لوحده. */
+
+.link-btn--plain {
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  text-align: right;
+}
+.link-btn--plain:hover {
+  color: var(--teal-700);
+}
+.row--click {
+  cursor: pointer;
+  border-radius: 8px;
+}
+.row--click:hover {
+  background: var(--surface-hover);
+}
+
+/* أعمار الديون */
+.aging {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aging__bar {
+  display: flex;
+  gap: 2px;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--line);
+}
+.aging--sm .aging__bar {
+  height: 8px;
+}
+.aging__bar span {
+  display: block;
+  height: 100%;
+  min-width: 3px;
+}
+.aging__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.aging__legend li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 7px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--fg-2);
+}
+.aging__legend li i {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+.aging__legend li b {
+  grid-column: 2;
+  font-size: 15px;
+  color: var(--fg);
+}
+.aging__legend li.is-zero {
+  opacity: 0.5;
+}
+.limit-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+  font-size: 12px;
+}
+
+/* كشف الحساب */
+.drawer__panel--wide {
+  width: min(760px, 100%);
+}
+.cust-kpis {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+.cust-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  min-width: 0;
+}
+.cust-kpi span {
+  font-size: 11.5px;
+  color: var(--fg-3);
+}
+.cust-kpi strong {
+  font-size: 17px;
+  font-weight: 700;
+}
+.cust-kpi--main {
+  background: var(--teal-50);
+  border-color: color-mix(in srgb, var(--teal) 35%, var(--line));
+  gap: 6px;
+}
+.cust-kpi--main strong {
+  font-size: 22px;
+}
+.cust-kpi--main small {
+  font-size: 11.5px;
+  color: var(--fg-2);
+}
+.cust-kpi--main.is-over {
+  background: var(--crit-soft);
+  border-color: color-mix(in srgb, var(--crit) 40%, var(--line));
+}
+.cust-kpi--main.is-over strong,
+.cust-kpi--main.is-over small {
+  color: var(--crit);
+}
+.cust-aging h3,
+.statement h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.cust-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.statement > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.statement > header h3 {
+  margin: 0;
+}
+.statement .table-wrap {
+  margin-inline: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.statement__table {
+  min-width: 600px;
+}
+.statement__table td {
+  padding-block: 9px;
+  font-size: 12.5px;
+}
+.statement__table td:first-child {
+  white-space: nowrap;
+}
+.statement__opening td {
+  background: var(--surface-2);
+  font-weight: 600;
+}
+.statement__table tr.is-credit td:nth-child(2) {
+  color: var(--good);
+}
+.collect-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.collect-head > div {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+}
+.collect-head b {
+  font-size: 15px;
+}
+.collect-head > div:last-child {
+  text-align: left;
+}
+
+@media (max-width: 720px) {
+  .aging__legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cust-kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cust-kpi--main,
+  .cust-kpi:last-child {
+    grid-column: 1 / -1;
+  }
+}

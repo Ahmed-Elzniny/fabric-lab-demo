@@ -1,0 +1,202 @@
+/* src/styles/admin.css — الخزن، الموردين، الإعدادات. */
+
+/* الخزن */
+.cash-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.cash-box {
+  padding: 16px 18px;
+  gap: 6px;
+  text-align: right;
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+}
+.cash-box:hover {
+  border-color: var(--fg-3);
+}
+.cash-box.is-active {
+  border-color: var(--teal);
+  background: var(--teal-50);
+}
+.cash-box__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.cash-box__name .chip {
+  margin-inline-start: auto;
+}
+.cash-box strong {
+  font-size: 26px;
+  font-weight: 700;
+}
+.cash-box__flows {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--fg-2);
+}
+.cash-box__flows span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.day-chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 14px;
+}
+.day-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  min-width: 72px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 12.5px;
+  flex: none;
+}
+.day-chip small {
+  font-size: 11px;
+  color: var(--fg-3);
+}
+.day-chip[aria-pressed="true"] {
+  background: var(--navy-2);
+  border-color: var(--navy-2);
+  color: #fff;
+}
+.day-chip[aria-pressed="true"] small {
+  color: #cbd5e1;
+}
+.journal-sum {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.journal-sum > div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+.journal-sum span {
+  font-size: 12px;
+  color: var(--fg-3);
+}
+.journal-sum b {
+  font-size: 17px;
+}
+.journal-sum__close {
+  background: var(--teal-50) !important;
+  border-color: color-mix(in srgb, var(--teal) 35%, var(--line)) !important;
+}
+.closing-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: var(--good-soft);
+  color: var(--good);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.closing-note.is-diff {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+/* الإعدادات */
+.biz {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 18px 20px;
+}
+.biz__main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.biz__main h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.biz__main p {
+  margin: 0;
+  font-size: 13px;
+}
+.biz__badge {
+  width: 52px;
+  height: 52px;
+  font-size: 17px;
+  border-radius: 14px;
+}
+.biz__whs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.biz__whs .route-pick__wh {
+  min-width: 220px;
+}
+.biz__whs small svg {
+  vertical-align: -1px;
+}
+.perm-table td,
+.perm-table th {
+  white-space: nowrap;
+}
+.activity {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.activity li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.activity li:last-child {
+  border-bottom: 0;
+}
+.activity__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--teal-50);
+  color: var(--teal-700);
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .journal-sum {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .biz__whs .route-pick__wh {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+}

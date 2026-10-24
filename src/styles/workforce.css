@@ -1,0 +1,163 @@
+/* src/styles/workforce.css — العمالة: صرف القبضة والسلف. */
+
+.form-warn {
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.stat-tile span svg {
+  vertical-align: -2px;
+}
+
+/* صرف القبضة */
+.payrun {
+  overflow: hidden;
+}
+.payrun__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 18px 12px;
+}
+.payrun__label {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+.payrun__label svg {
+  color: var(--teal-700);
+}
+.payrun .table-wrap {
+  margin: 0;
+}
+.payrun__table {
+  min-width: 760px;
+}
+.payrun__table td {
+  vertical-align: middle;
+}
+.payrun__table tr.is-off td {
+  opacity: 0.55;
+}
+.payrun__table tr.is-off td:first-child {
+  opacity: 1;
+}
+.check-lg {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--teal);
+  cursor: pointer;
+}
+.pay-input {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.pay-input input {
+  width: 96px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.pay-input input:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+.pay-input input:disabled {
+  background: var(--surface-2);
+}
+.pay-input small {
+  font-size: 11px;
+  color: var(--fg-3);
+}
+.payrun__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 18px 18px;
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.payrun__boxes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.payrun__box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 13px;
+}
+.payrun__box svg {
+  color: var(--teal-700);
+}
+.payrun__box small {
+  color: var(--fg-3);
+  font-size: 11.5px;
+}
+.payrun__box.is-short {
+  border-color: color-mix(in srgb, var(--crit) 45%, var(--line));
+  background: var(--crit-soft);
+}
+.payrun__box.is-short small {
+  color: var(--crit);
+  font-weight: 600;
+}
+.payrun__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--fg-2);
+}
+.payrun__total strong {
+  white-space: nowrap;
+  font-size: 24px;
+  color: var(--fg);
+}
+.payrun__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* كشف الموظف */
+.statement__table tr.is-advance td {
+  background: var(--warn-soft);
+}
+
+@media (max-width: 720px) {
+  .payrun__head .seg {
+    width: 100%;
+    flex-direction: column;
+  }
+  .payrun__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
